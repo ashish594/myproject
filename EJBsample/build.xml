@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<project name="servletlesson" default="EjbBuild" basedir="." > 
+	<property name="java.program.dir" value = "./src" />	
+	<property name="java.classes.dir" value = "./classes" />
+	<property name="lib.dir" value = "./lib" />
+	
+	<target name="Ejb1Build" >
+		<path id="project.class.path">
+			<fileset dir="${lib.dir}">
+				<include name="*.jar"/>
+			</fileset>
+		</path>
+		<javac includeantruntime="false"  classpathref="project.class.path"  destdir="${java.classes.dir}" debug="true">
+			<src path="${java.program.dir}" />
+		</javac>
+		<jar destfile="biz.jar" basedir="${java.classes.dir}" 
+						includes="**/ejb/**/*.class" />
+	</target>
+		
+</project>
